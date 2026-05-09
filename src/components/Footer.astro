@@ -1,0 +1,124 @@
+---
+const year = new Date().getFullYear();
+// TODO_VERIFICAR: Confirmar email de contacto real
+const contactEmail = 'ventas@bystepsolutions.tech';
+// TODO_VERIFICAR: Agregar URL real de política de privacidad cuando esté disponible
+const privacyUrl = '#politica-privacidad';
+---
+
+<footer class="bg-neutral-900 text-neutral-400 py-12" aria-label="Pie de página">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
+
+      <!-- Marca -->
+      <div>
+        <div class="flex items-center gap-2.5 mb-3">
+          <!--
+            TODO: Reemplazar con logo completo (icono + texto By Step Solutions)
+            <img
+              src="/logos/icon-with-text.png"
+              alt="By Step Solutions"
+              width="140"
+              height="32"
+              class="h-8 w-auto"
+              loading="lazy"
+            />
+            Archivo esperado: public/logos/icon-with-text.png
+          -->
+          <div
+            class="w-7 h-7 bg-primary rounded-md flex items-center justify-center shrink-0"
+            aria-hidden="true"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              class="w-4 h-4 text-white"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 7h14M5 12h14M5 17h10" />
+            </svg>
+          </div>
+          <span class="text-white font-semibold text-sm">Delivery Planner</span>
+        </div>
+        <p class="text-sm leading-relaxed">
+          Solución de gestión de entregas para pymes en Colombia.
+          <br />
+          Desarrollado por{' '}
+          <span class="text-neutral-300 font-medium">By Step Solutions</span>.
+        </p>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h3 class="text-white font-semibold text-sm mb-3">Contacto</h3>
+        <ul class="space-y-2 text-sm" role="list">
+          <li>
+            <a
+              href={`mailto:${contactEmail}`}
+              class="hover:text-white transition-colors"
+              aria-label={`Enviar email a ${contactEmail}`}
+            >
+              {contactEmail}
+            </a>
+          </li>
+          <li>
+            <a
+              href="/politica-privacidad"
+              class="hover:text-white transition-colors"
+              aria-label="Ver política de privacidad"
+            >
+              Política de privacidad
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Producto -->
+      <div>
+        <h3 class="text-white font-semibold text-sm mb-3">Producto</h3>
+        <ul class="space-y-2 text-sm" role="list">
+          <li>
+            <a
+              href="#precios"
+              class="hover:text-white transition-colors"
+            >
+              Planes y precios
+            </a>
+          </li>
+          <li>
+            <a
+              href="#faq"
+              class="hover:text-white transition-colors"
+            >
+              Preguntas frecuentes
+            </a>
+          </li>
+          <li>
+            <a
+              href="#contacto"
+              class="hover:text-white transition-colors"
+            >
+              Contacto
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Línea inferior -->
+    <div class="border-t border-neutral-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+      <p>
+        &copy; {year} By Step Solutions. Todos los derechos reservados.
+      </p>
+      <p>
+        Medellín, Colombia
+      </p>
+    </div>
+
+  </div>
+</footer>

@@ -1,0 +1,110 @@
+---
+const faqs = [
+  {
+    question: '¿Cuánto tarda en estar funcionando?',
+    answer:
+      'El setup inicial toma menos de 1 día hábil. Nuestro equipo configura tu organización, crea los usuarios y te acompaña en la primera sesión para que tú y tu equipo queden listos para operar.',
+  },
+  {
+    question: '¿Necesito instalar algo?',
+    answer:
+      'No. Delivery Planner es 100% web. Funciona en cualquier navegador moderno — Chrome, Safari, Firefox — desde el computador o el celular, sin descargar ni instalar ninguna aplicación.',
+  },
+  {
+    question: '¿Puedo agregar más empleados?',
+    answer:
+      'Sí. Puedes crear perfiles de empleado dentro de tu organización. Cada empleado tiene acceso solo a sus tareas asignadas. Consulta con nosotros los límites exactos según tu plan. (TODO_VERIFICAR: Límite específico de usuarios por plan)',
+  },
+  {
+    question: '¿Cómo se hacen los pagos?',
+    answer:
+      'Los pagos se coordinan directamente con nuestro equipo por WhatsApp. (TODO_VERIFICAR: Confirmar métodos aceptados — transferencia bancaria, PSE, efectivo, etc.)',
+  },
+  {
+    question: '¿Qué pasa si quiero cancelar?',
+    answer:
+      'Puedes cancelar al finalizar tu período de suscripción sin penalidades. No hay compromisos más allá del período contratado. Si pagaste anual, tienes acceso hasta que venza el año.',
+  },
+  {
+    question: '¿Mis datos están seguros?',
+    answer:
+      'Sí. Toda la comunicación con el producto usa HTTPS (cifrado en tránsito). Los datos de tus pedidos y clientes están almacenados en servidores seguros y son exclusivamente tuyos.',
+  },
+  {
+    question: '¿Funciona en mi celular?',
+    answer:
+      'Completamente. Delivery Planner está diseñado mobile-first. Funciona perfecto en cualquier smartphone — Android o iPhone — sin necesidad de descargar ninguna app.',
+  },
+  {
+    question: '¿Tienen soporte?',
+    answer:
+      'Sí. Ofrecemos soporte por WhatsApp en horario de oficina (lunes a viernes). La mayoría de consultas se resuelven el mismo día. Para clientes con plan anual hay atención prioritaria.',
+  },
+];
+---
+
+<section
+  class="py-16 md:py-24 bg-surface"
+  aria-labelledby="faq-heading"
+  id="faq"
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Encabezado -->
+    <div class="text-center mb-12">
+      <h2
+        id="faq-heading"
+        class="text-3xl md:text-4xl font-bold text-neutral-900 mb-4"
+      >
+        Preguntas frecuentes
+      </h2>
+      <p class="text-lg text-neutral-600">
+        ¿Algo que no está aquí?{' '}
+        <a
+          href="#contacto"
+          class="text-primary hover:underline font-medium"
+          aria-label="Ir a la sección de contacto"
+        >
+          Escríbenos directamente.
+        </a>
+      </p>
+    </div>
+
+    <!-- Lista de preguntas -->
+    <div class="space-y-3" role="list">
+      {faqs.map((faq, i) => (
+        <details
+          class="bg-white rounded-xl border border-neutral-200 overflow-hidden"
+          role="listitem"
+        >
+          <summary
+            class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer hover:bg-neutral-50 transition-colors"
+            aria-expanded="false"
+          >
+            <span class="text-base font-semibold text-neutral-900 text-left">
+              {faq.question}
+            </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="w-5 h-5 text-neutral-400 shrink-0 faq-arrow"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </summary>
+
+          <div class="px-6 pb-5">
+            <p class="text-neutral-600 leading-relaxed">{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+  </div>
+</section>

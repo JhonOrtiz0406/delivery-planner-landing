@@ -1,0 +1,115 @@
+---
+// ⚠️  REEMPLAZAR_CON_TESTIMONIO_REAL
+// Todos los datos de este componente son placeholder.
+// Obtener testimonio real del cliente (joyería en Medellín) y reemplazar.
+---
+
+<section
+  class="py-16 md:py-24 bg-primary"
+  aria-labelledby="testimonial-heading"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+    <!-- Comilla decorativa -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="w-12 h-12 text-white/20 mx-auto mb-6"
+      aria-hidden="true"
+    >
+      <path
+        d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179Zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179Z"
+      />
+    </svg>
+
+    <!-- ⚠️ PLACEHOLDER: Reemplazar con testimonio real -->
+    <figure>
+      <blockquote
+        class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8"
+        aria-label="Testimonio del cliente (placeholder — pendiente de reemplazar con versión real)"
+      >
+        <!--
+          TODO — REEMPLAZAR_CON_TESTIMONIO_REAL:
+          Texto del testimonio real del cliente de joyería.
+          Preguntar al cliente: ¿Qué problema resolvió? ¿Qué cambió en su negocio?
+        -->
+        "Antes perdíamos tiempo buscando en WhatsApp qué pedido estaba listo y
+        cuál no. Ahora todo está en un solo lugar y mis empleados saben
+        exactamente qué entregar cada día."
+      </blockquote>
+
+      <figcaption class="flex flex-col items-center gap-4">
+
+        <!-- Avatar placeholder -->
+        <!--
+          TODO — REEMPLAZAR_CON_TESTIMONIO_REAL:
+          Foto real del cliente (con permiso). Formato: JPG/PNG cuadrado.
+          Archivo esperado: public/testimonials/cliente-joyeria.jpg
+        -->
+        <div
+          class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center"
+          aria-label="Foto del cliente (placeholder)"
+          role="img"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-8 h-8 text-white/60"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+
+        <div>
+          <!--
+            TODO — REEMPLAZAR_CON_TESTIMONIO_REAL:
+            Nombre real del cliente (o seudónimo si prefiere anonimato)
+          -->
+          <div class="font-semibold text-white text-base">
+            Nombre del Cliente — TODO_VERIFICAR
+          </div>
+          <!--
+            TODO — REEMPLAZAR_CON_TESTIMONIO_REAL:
+            Cargo y nombre del negocio
+          -->
+          <div class="text-white/70 text-sm">
+            Propietario · Joyería en Medellín, Colombia
+          </div>
+        </div>
+
+        <!-- Métricas de resultado (placeholder) -->
+        <!--
+          TODO — REEMPLAZAR_CON_TESTIMONIO_REAL:
+          Reemplazar con métricas reales: tiempo ahorrado, pedidos gestionados,
+          reducción de errores, etc.
+        -->
+        <div
+          class="flex flex-wrap justify-center gap-6 mt-4 pt-4 border-t border-white/20 w-full"
+          aria-label="Resultados del cliente (datos por confirmar)"
+        >
+          {[
+            { value: 'TODO_VERIFICAR', label: 'Pedidos gestionados al mes' },
+            { value: 'TODO_VERIFICAR', label: 'Reducción de errores' },
+            { value: 'TODO_VERIFICAR', label: 'Tiempo ahorrado por semana' },
+          ].map((metric) => (
+            <div class="text-center">
+              <div class="text-2xl font-bold text-white">{metric.value}</div>
+              <div class="text-xs text-white/60 mt-0.5 max-w-[100px]">
+                {metric.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </figcaption>
+    </figure>
+
+  </div>
+</section>

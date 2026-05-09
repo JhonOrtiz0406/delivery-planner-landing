@@ -1,0 +1,94 @@
+---
+const problems = [
+  {
+    title: 'Pedidos perdidos entre Excel y WhatsApp',
+    body: 'Cuando tu negocio crece, las hojas de cálculo y los grupos de WhatsApp se vuelven un caos. Un pedido se pierde, un cliente se molesta, y tú pierdes tiempo buscando qué pasó.',
+    icon: 'document-x',
+  },
+  {
+    title: 'Tu equipo no sabe qué entregar ni cuándo',
+    body: 'Cada empleado tiene su propia lista o, peor, ninguna. Las entregas se retrasan porque no hay claridad de responsabilidades ni fechas. El cliente espera y no sabe por qué.',
+    icon: 'user-confused',
+  },
+  {
+    title: '"¿Ya llegó mi pedido?" todo el día',
+    body: 'Esa pregunta que interrumpe tu jornada y la de tus empleados, una y otra vez. Sin un sistema, cada cliente tiene que llamar o escribir para saber en qué va su pedido.',
+    icon: 'chat-question',
+  },
+];
+---
+
+<section
+  class="py-16 md:py-24 bg-neutral-50"
+  aria-labelledby="problems-heading"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Encabezado -->
+    <div class="text-center mb-12">
+      <h2
+        id="problems-heading"
+        class="text-3xl md:text-4xl font-bold text-neutral-900 mb-4"
+      >
+        ¿Reconoces estos problemas?
+      </h2>
+      <p class="text-lg text-neutral-600 max-w-2xl mx-auto">
+        Si gestionas entregas con una pyme en Colombia, es probable que hayas
+        vivido alguno de estos escenarios.
+      </p>
+    </div>
+
+    <!-- Cards de problemas -->
+    <div class="grid md:grid-cols-3 gap-6">
+      {problems.map((problem) => (
+        <div class="bg-white rounded-xl border border-neutral-200 shadow-sm p-6 md:p-8">
+
+          <!-- Ícono del problema -->
+          <div
+            class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-5"
+            aria-hidden="true"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 text-red-500"
+            >
+              {problem.icon === 'document-x' && (
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m6.75 12-3-3m0 0-3 3m3-3v6m-1.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+                />
+              )}
+              {problem.icon === 'user-confused' && (
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                />
+              )}
+              {problem.icon === 'chat-question' && (
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"
+                />
+              )}
+            </svg>
+          </div>
+
+          <h3 class="text-lg font-bold text-neutral-900 mb-3">
+            {problem.title}
+          </h3>
+          <p class="text-neutral-600 leading-relaxed">
+            {problem.body}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

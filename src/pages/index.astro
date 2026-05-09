@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Problem from '../components/Problem.astro';
+import Solution from '../components/Solution.astro';
+import Sectors from '../components/Sectors.astro';
+import Testimonial from '../components/Testimonial.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import CTAFinal from '../components/CTAFinal.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+---
+
+<Layout
+  title="Delivery Planner | Gestión de Entregas para Pymes en Colombia"
+  description="Centraliza los pedidos de tu negocio, notifica a tus clientes y organiza a tu equipo de entregas — todo desde el celular. Para joyerías, lavanderías, celulares y más."
+>
+  <Navbar />
+
+  <main id="main-content">
+    <Hero />
+    <Problem />
+    <Solution />
+    <Sectors />
+    <Testimonial />
+    <Pricing />
+    <FAQ />
+    <CTAFinal />
+  </main>
+
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

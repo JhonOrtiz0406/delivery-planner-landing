@@ -1,0 +1,163 @@
+---
+const sectors = [
+  {
+    name: 'Joyería',
+    description:
+      'Gestiona pedidos de personalización y reparación con plazos exactos. Ninguna pieza se pierde de vista.',
+    color: 'from-yellow-50 to-amber-50',
+    iconColor: 'text-amber-600',
+    iconBg: 'bg-amber-100',
+  },
+  {
+    name: 'Lavandería',
+    description:
+      'Controla el flujo de prendas que entran y salen con estados claros. Tus clientes saben cuándo recoger.',
+    color: 'from-blue-50 to-cyan-50',
+    iconColor: 'text-cyan-600',
+    iconBg: 'bg-cyan-100',
+  },
+  {
+    name: 'Celulares',
+    description:
+      'Registra reparaciones con seguimiento por etapas hasta la entrega al cliente. Sin confusiones.',
+    color: 'from-purple-50 to-violet-50',
+    iconColor: 'text-violet-600',
+    iconBg: 'bg-violet-100',
+  },
+  {
+    name: 'General',
+    description:
+      'Cualquier negocio con pedidos pendientes puede usarlo. Si tienes clientes esperando, esto es para ti.',
+    color: 'from-green-50 to-emerald-50',
+    iconColor: 'text-emerald-600',
+    iconBg: 'bg-emerald-100',
+  },
+];
+---
+
+<section
+  class="py-16 md:py-24 bg-surface"
+  aria-labelledby="sectors-heading"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Encabezado -->
+    <div class="text-center mb-12">
+      <h2
+        id="sectors-heading"
+        class="text-3xl md:text-4xl font-bold text-neutral-900 mb-4"
+      >
+        Para tu tipo de negocio
+      </h2>
+      <p class="text-lg text-neutral-600 max-w-xl mx-auto">
+        Delivery Planner se adapta a negocios pyme con pedidos y entregas,
+        sin importar el sector.
+      </p>
+    </div>
+
+    <!-- Cards de sectores -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {sectors.map((sector) => (
+        <div
+          class={`bg-gradient-to-br ${sector.color} rounded-2xl border border-neutral-200 p-6 flex flex-col gap-4`}
+          role="article"
+          aria-label={`Sector: ${sector.name}`}
+        >
+          <!-- Ícono -->
+          <div
+            class={`w-12 h-12 ${sector.iconBg} rounded-xl flex items-center justify-center`}
+            aria-hidden="true"
+          >
+            {sector.name === 'Joyería' && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class={`w-6 h-6 ${sector.iconColor}`}
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"
+                />
+              </svg>
+            )}
+            {sector.name === 'Lavandería' && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class={`w-6 h-6 ${sector.iconColor}`}
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+                />
+              </svg>
+            )}
+            {sector.name === 'Celulares' && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class={`w-6 h-6 ${sector.iconColor}`}
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+                />
+              </svg>
+            )}
+            {sector.name === 'General' && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class={`w-6 h-6 ${sector.iconColor}`}
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"
+                />
+              </svg>
+            )}
+          </div>
+
+          <!-- Nombre -->
+          <h3 class="text-lg font-bold text-neutral-900">
+            {sector.name}
+          </h3>
+
+          <!-- Descripción -->
+          <p class="text-sm text-neutral-600 leading-relaxed">
+            {sector.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA sectorial -->
+    <p class="text-center text-neutral-500 text-sm mt-8">
+      ¿Tu sector no aparece?{' '}
+      <a
+        href="#contacto"
+        class="text-primary font-medium hover:underline"
+        aria-label="Consultar por sector no listado"
+      >
+        Hablamos y lo evaluamos juntos.
+      </a>
+    </p>
+
+  </div>
+</section>
