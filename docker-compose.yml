@@ -4,9 +4,8 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        # Dokploy inyecta estas variables desde su panel de env vars
+        # Dokploy inyecta esta variable desde su panel de env vars
         PUBLIC_WHATSAPP_NUMBER: ${PUBLIC_WHATSAPP_NUMBER:-573001234567}
-        PUBLIC_DEMO_URL: ${PUBLIC_DEMO_URL:-https://delivery-planner.bystepsolutions.tech}
     restart: unless-stopped
     expose:
       - "80"

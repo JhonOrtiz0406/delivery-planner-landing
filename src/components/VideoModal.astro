@@ -1,0 +1,113 @@
+---
+/**
+ * Modal de video reutilizable. Mismo shell/estilo/accesibilidad que Lightbox.astro
+ * pero para un iframe (YouTube/Vimeo). El src se inyecta al abrir y se vacía al
+ * cerrar para detener la reproducción.
+ *
+ * Uso:
+ *   <VideoModal id="hero-demo" src={DEMO_VIDEO_URL} />
+ *   <button data-video-open="hero-demo">Ver demo</button>
+ */
+interface Props {
+  src: string;
+  id?: string;
+  title?: string;
+}
+
+const { src, id = 'video-modal', title = 'Video demostración' } = Astro.props;
+---
+
+<div
+  id={id}
+  class="video-modal fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-8"
+  role="dialog"
+  aria-modal="true"
+  aria-label={title}
+  data-video-root
+>
+  <!-- Cerrar -->
+  <button
+    type="button"
+    class="video-close absolute top-4 right-4 w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+    aria-label="Cerrar video"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="w-6 h-6" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  </button>
+
+  <!-- Contenedor 16:9 responsivo -->
+  <div class="w-full max-w-4xl aspect-video rounded-lg overflow-hidden shadow-2xl bg-black">
+    <iframe
+      class="video-frame w-full h-full"
+      src=""
+      title={title}
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>
+  </div>
+</div>
+
+<script define:vars={{ src, id }}>
+  function initVideoModal() {
+    const root = document.getElementById(id);
+    if (!root) return;
+
+    const iframe = root.querySelector('.video-frame');
+    const btnClose = root.querySelector('.video-close');
+    let lastFocused = null;
+
+    function open() {
+      iframe.src = src;
+      lastFocused = document.activeElement;
+      root.classList.remove('hidden');
+      root.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      btnClose.focus();
+      document.addEventListener('keydown', onKey);
+    }
+
+    function close() {
+      iframe.src = ''; // detiene la reproducción (descarga el iframe)
+      root.classList.add('hidden');
+      root.classList.remove('flex');
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
+
+    function onKey(e) {
+      if (e.key === 'Escape') { close(); return; }
+      if (e.key === 'Tab') {
+        // Focus trap entre los elementos enfocables del modal
+        const focusables = root.querySelectorAll('button, iframe');
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    btnClose.addEventListener('click', close);
+    // Clic en el fondo (no en la figura) cierra
+    root.addEventListener('click', (e) => { if (e.target === root) close(); });
+
+    // Disparadores
+    document.querySelectorAll(`[data-video-open="${id}"]`).forEach((el) => {
+      el.addEventListener('click', open);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initVideoModal);
+  } else {
+    initVideoModal();
+  }
+</script>

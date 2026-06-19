@@ -9,9 +9,7 @@ RUN npm ci --prefer-offline
 
 # Variables de entorno disponibles en build time (SSG)
 ARG PUBLIC_WHATSAPP_NUMBER=573001234567
-ARG PUBLIC_DEMO_URL=https://delivery-planner.bystepsolutions.tech
 ENV PUBLIC_WHATSAPP_NUMBER=$PUBLIC_WHATSAPP_NUMBER
-ENV PUBLIC_DEMO_URL=$PUBLIC_DEMO_URL
 
 # Copiar código y construir
 COPY . .

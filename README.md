@@ -24,7 +24,6 @@ cp .env.example .env
 
 # 3. Editar .env con los valores reales
 #    PUBLIC_WHATSAPP_NUMBER=57XXXXXXXXXX
-#    PUBLIC_DEMO_URL=https://...
 
 # 4. Instalar dependencias
 npm install
@@ -87,7 +86,6 @@ Buscar `REEMPLAZAR_CON_TESTIMONIO_REAL` y `TODO_VERIFICAR` en ese archivo.
 | Variable | Descripción | Default |
 |----------|-------------|---------|
 | `PUBLIC_WHATSAPP_NUMBER` | Número WhatsApp sin `+` ni espacios | `573001234567` |
-| `PUBLIC_DEMO_URL` | URL del video/demo del producto | URL producción |
 
 Las variables `PUBLIC_*` de Astro se inyectan en build time (SSG). Para cambiarlas en producción, hacer un nuevo build.
 
@@ -106,7 +104,6 @@ Desde el panel de Dokploy, configurar:
 
 ```
 PUBLIC_WHATSAPP_NUMBER=57XXXXXXXXXX
-PUBLIC_DEMO_URL=https://...
 ```
 
 ### Build y deploy
@@ -115,7 +112,6 @@ PUBLIC_DEMO_URL=https://...
 # Build de imagen Docker
 docker build \
   --build-arg PUBLIC_WHATSAPP_NUMBER=57XXXXXXXXXX \
-  --build-arg PUBLIC_DEMO_URL=https://... \
   -t delivery-planner-landing .
 
 # Verificar que funciona localmente
@@ -169,7 +165,7 @@ public/
 ## Pendientes (TODO_VERIFICAR)
 
 - [ ] Reemplazar número WhatsApp real en `.env`
-- [ ] Definir URL del demo y actualizar `PUBLIC_DEMO_URL`
+- [ ] Cambiar el video demo: editar `DEMO_VIDEO_URL` en `src/lib/config.ts` (forma `/embed/` de YouTube)
 - [ ] Agregar logos PNG a `public/logos/`
 - [ ] Agregar screenshots del producto a `public/screenshots/`
 - [ ] Reemplazar testimonio placeholder en `Testimonial.astro`

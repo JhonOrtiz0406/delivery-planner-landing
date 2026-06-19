@@ -1,6 +1,7 @@
 ---
-import { WHATSAPP_URL, DEMO_URL } from '../lib/config';
+import { WHATSAPP_URL, DEMO_VIDEO_URL } from '../lib/config';
 import Lightbox from './Lightbox.astro';
+import VideoModal from './VideoModal.astro';
 
 // Fuente única de la galería del hero. El índice 0 es la imagen principal;
 // el resto son las miniaturas. Tanto el hero como el Lightbox la consumen.
@@ -82,10 +83,12 @@ const gallery = [
             Hablar por WhatsApp
           </a>
 
-          <a
-            href={DEMO_URL}
+          <button
+            type="button"
+            data-video-open="hero-demo"
             class="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary hover:bg-primary-light px-6 py-3.5 rounded-lg font-semibold transition-colors duration-200 text-base min-h-[52px]"
-            aria-label="Ver demostración del producto"
+            aria-label="Ver video demostración del producto"
+            aria-haspopup="dialog"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +105,7 @@ const gallery = [
               <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none" />
             </svg>
             Ver demo
-          </a>
+          </button>
         </div>
 
         <!-- Social proof -->
@@ -232,4 +235,7 @@ const gallery = [
 
   <!-- Lightbox de la galería del hero -->
   <Lightbox images={gallery} id="hero-gallery" />
+
+  <!-- Modal del video demo -->
+  <VideoModal id="hero-demo" src={DEMO_VIDEO_URL} title="Demo de Delivery Planner" />
 </section>
