@@ -3,22 +3,22 @@ const features = [
   {
     title: 'Registro centralizado de pedidos',
     body: 'Un solo lugar para todos tus pedidos, con estado, cliente asignado, responsable de entrega y fecha límite. Sin hojas de cálculo, sin mensajes perdidos.',
-    screenshot: 'add-order',
-    screenshotLabel: 'Vista de registro de pedidos',
+    img: '/pedidos.png',
+    screenshotLabel: 'Vista de registro de pedidos en Delivery Planner',
     badge: null,
   },
   {
     title: 'Notificaciones automáticas al cliente',
     body: 'Tus clientes reciben actualizaciones automáticas cuando su pedido avanza. Menos llamadas entrantes, menos interrupciones, clientes más tranquilos.',
-    screenshot: 'filter',
-    screenshotLabel: 'Vista de notificaciones y filtros',
+    img: '/invitacionOrganizacionGmail.png',
+    screenshotLabel: 'Invitación al cliente por Gmail',
     badge: 'Próximamente WhatsApp',
   },
   {
     title: 'Roles diferenciados por tipo de usuario',
     body: 'El administrador tiene visibilidad y control total. Los empleados ven solo sus tareas asignadas. Cada quien tiene exactamente lo que necesita.',
-    screenshot: 'employees',
-    screenshotLabel: 'Vista de gestión de empleados',
+    img: '/equipo.png',
+    screenshotLabel: 'Vista de gestión de equipo en Delivery Planner',
     badge: null,
   },
 ];
@@ -86,7 +86,7 @@ const features = [
             <ul class="space-y-2.5" role="list">
               {[
                 i === 0 && ['Asigna responsable por pedido', 'Estados actualizables en tiempo real', 'Historial completo de cada pedido'],
-                i === 1 && ['El cliente sabe sin tener que preguntar', 'Reduce llamadas y mensajes repetitivos', 'TODO_VERIFICAR: Canales disponibles de notificación'],
+                i === 1 && ['El cliente sabe sin tener que preguntar', 'Reduce llamadas y mensajes repetitivos', 'Canales disponibles de notificación: Gmail/Whatsapp'],
                 i === 2 && ['Administrador con vista global', 'Empleado ve solo sus entregas del día', 'Sin accesos innecesarios a datos sensibles'],
               ].flat().filter(Boolean).map((item) => (
                 <li class="flex items-start gap-2.5 text-neutral-700">
@@ -109,47 +109,16 @@ const features = [
             </ul>
           </div>
 
-          <!-- Screenshot placeholder -->
+          <!-- Screenshot -->
           <div
             class="bg-white rounded-2xl border border-neutral-200 shadow-lg overflow-hidden"
-            role="img"
-            aria-label={`${feature.screenshotLabel} (screenshot pendiente)`}
           >
-            <!--
-              TODO: Reemplazar por:
-              <img
-                src={`/screenshots/${feature.screenshot}.png`}
-                alt={feature.screenshotLabel}
-                class="w-full"
-                loading="lazy"
-              />
-              Archivo esperado: public/screenshots/{feature.screenshot}.png
-            -->
-            <div class="aspect-video bg-gradient-to-br from-primary-light/60 to-surface flex flex-col items-center justify-center gap-3">
-              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6 text-primary"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
-                  />
-                </svg>
-              </div>
-              <p class="text-sm font-semibold text-neutral-500">
-                {feature.screenshotLabel}
-              </p>
-              <p class="text-xs text-neutral-400">
-                [ Reemplazar con screenshot: {feature.screenshot}.png ]
-              </p>
-            </div>
+            <img
+              src={feature.img}
+              alt={feature.screenshotLabel}
+              class="w-full"
+              loading="lazy"
+            />
           </div>
 
         </div>

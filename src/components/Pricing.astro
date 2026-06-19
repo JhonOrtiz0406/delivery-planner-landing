@@ -1,25 +1,22 @@
 ---
 import { WHATSAPP_URL } from '../lib/config';
 
-// TODO_VERIFICAR: Confirmar si plan anual incluye setup o tiene algún beneficio diferencial
-// vs plan mensual. Actualmente ambos tienen setup $800.000.
-// Posible diferencial: pago único = flujo de caja predecible + acceso garantizado 12 meses.
-
 const plans = [
   {
     name: 'Mensual',
     price: '$140.000',
     period: '/mes',
     setup: '$800.000',
+    freeSetup: false,
     description: 'Ideal para empezar y evaluar el producto sin compromisos largos.',
     recommended: false,
     features: [
-      'Registro ilimitado de pedidos',
-      'Roles: administrador y empleado',
-      'Acceso desde cualquier dispositivo',
+      'Registro ilimitado de pedidos y entregas',
+      'Hasta 5 usuarios (administrador + empleados)',
+      'Acceso desde cualquier dispositivo, sin instalar nada',
+      'Notificaciones automáticas a tus clientes',
       'Soporte por WhatsApp',
       'Setup y configuración inicial incluidos',
-      'TODO_VERIFICAR: Límite de empleados por plan',
     ],
     cta: 'Empezar mensual',
   },
@@ -28,15 +25,16 @@ const plans = [
     price: '$1.680.000',
     period: '/año',
     setup: '$800.000',
+    freeSetup: true,
     description: 'Compromiso anual con el mismo costo mensual. Acceso garantizado todo el año.',
     recommended: true,
     features: [
-      'Todo lo del plan mensual',
-      'Pago único — sin preocupación mensual',
-      'Acceso garantizado los 12 meses',
-      'Prioridad en soporte',
-      'Setup y configuración inicial incluidos',
-      'TODO_VERIFICAR: Beneficios adicionales plan anual',
+      'Todo lo del plan Mensual',
+      'Usuarios ilimitados — suma a todo tu equipo sin costo extra',
+      'Pago único anual: olvídate del cobro mes a mes',
+      'Precio congelado los 12 meses, sin sorpresas',
+      'Soporte prioritario por WhatsApp',
+      'Nuevas funciones incluidas sin costo adicional',
     ],
     cta: 'Empezar anual',
   },
@@ -60,6 +58,20 @@ const plans = [
       </h2>
       <p class="text-lg text-neutral-600 max-w-xl mx-auto">
         Precios en pesos colombianos. Sin costos ocultos. Sin sorpresas.
+      </p>
+
+      <!-- Refuerzo: el ahorro empuja hacia el plan anual -->
+      <p class="inline-flex items-center gap-2 mt-5 bg-accent-light text-accent-dark font-semibold text-sm px-4 py-2 rounded-full">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="w-4 h-4 shrink-0"
+          aria-hidden="true"
+        >
+          <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
+        </svg>
+        Setup gratis solo en plan anual — ahorras $800.000
       </p>
     </div>
 
@@ -99,11 +111,26 @@ const plans = [
               <span class="text-4xl font-bold text-neutral-900">{plan.price}</span>
               <span class="text-neutral-500 mb-1.5 text-base">{plan.period}</span>
             </div>
-            <p class="text-sm text-neutral-500 mt-1.5">
-              + Setup único{' '}
-              <span class="font-semibold text-neutral-700">{plan.setup}</span>
-              {' '}(una sola vez)
-            </p>
+            {plan.freeSetup ? (
+              <p class="text-sm font-semibold text-accent-dark mt-2 inline-flex items-center gap-1.5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="w-4 h-4 shrink-0"
+                  aria-hidden="true"
+                >
+                  <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
+                </svg>
+                Setup y configuración GRATIS — ahorras {plan.setup}
+              </p>
+            ) : (
+              <p class="text-sm text-neutral-500 mt-1.5">
+                + Setup único{' '}
+                <span class="font-semibold text-neutral-700">{plan.setup}</span>
+                {' '}(una sola vez)
+              </p>
+            )}
           </div>
 
           <!-- Separador -->

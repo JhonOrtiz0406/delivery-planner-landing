@@ -1,12 +1,14 @@
 ---
 import { WHATSAPP_URL, DEMO_URL } from '../lib/config';
+import Lightbox from './Lightbox.astro';
 
-const screenshots = [
-  { id: 'login',      label: 'Inicio de sesión',   icon: 'lock' },
-  { id: 'calendar',   label: 'Calendario',          icon: 'calendar' },
-  { id: 'add-order',  label: 'Nuevo pedido',        icon: 'plus-circle' },
-  { id: 'employees',  label: 'Empleados',           icon: 'users' },
-  { id: 'filter',     label: 'Filtros',             icon: 'filter' },
+// Fuente única de la galería del hero. El índice 0 es la imagen principal;
+// el resto son las miniaturas. Tanto el hero como el Lightbox la consumen.
+const gallery = [
+  { src: '/dashboard.png', alt: 'Dashboard principal de Delivery Planner — vista de pedidos y calendario', label: 'Gestión' },
+  { src: '/pedidos.png', alt: 'Vista de registro de pedidos en Delivery Planner', label: 'Pedidos' },
+  { src: '/equipo.png', alt: 'Vista de gestión de equipo en Delivery Planner', label: 'Equipo' },
+  { src: '/invitacionOrganizacionGmail.png', alt: 'Invitación de cliente a la organización por Gmail', label: 'Invitar' },
 ];
 ---
 
@@ -38,7 +40,7 @@ const screenshots = [
               clip-rule="evenodd"
             />
           </svg>
-          Usado por negocios en Medellín, Colombia
+          Usado por negocios en Colombia
         </div>
 
         <!-- Titular -->
@@ -80,11 +82,6 @@ const screenshots = [
             Hablar por WhatsApp
           </a>
 
-          <!--
-            TODO_VERIFICAR: Definir URL del demo.
-            Opciones: video de YouTube, enlace al producto en producción, o página de demo separada.
-            Actualizar PUBLIC_DEMO_URL en .env
-          -->
           <a
             href={DEMO_URL}
             class="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary hover:bg-primary-light px-6 py-3.5 rounded-lg font-semibold transition-colors duration-200 text-base min-h-[52px]"
@@ -125,7 +122,7 @@ const screenshots = [
               </svg>
             ))}
           </div>
-          <span>1 cliente activo · Joyería en Medellín</span>
+          <span>1 cliente activo · Joyería KoB, El Bordo, Cauca</span>
         </div>
       </div>
 
@@ -150,7 +147,7 @@ const screenshots = [
                 class="flex-1 bg-white rounded-md px-3 py-1 text-xs text-neutral-400 text-center truncate border border-neutral-200"
                 aria-hidden="true"
               >
-                delivery-planner.bystepsolutions.tech
+                app.delivery-planner.bystepsolutions.tech
               </div>
             </div>
 
@@ -169,91 +166,62 @@ const screenshots = [
               ))}
             </div>
 
-            <!--
-              SCREENSHOT PRINCIPAL: Vista de Calendario
-              TODO: Reemplazar por:
+            <button
+              type="button"
+              class="group relative block w-full cursor-zoom-in"
+              data-lightbox-target="hero-gallery"
+              data-lightbox-trigger="0"
+              aria-label="Ampliar: dashboard principal de Delivery Planner"
+            >
               <img
-                src="/screenshots/calendar.png"
-                alt="Vista de calendario de pedidos en Delivery Planner"
+                src={gallery[0].src}
+                alt={gallery[0].alt}
                 width="800"
                 height="450"
-                class="w-full"
+                class="w-full transition-transform duration-300 group-hover:scale-[1.02]"
                 loading="eager"
               />
-              Archivo esperado: public/screenshots/calendar.png
-            -->
-            <div
-              class="aspect-video bg-gradient-to-br from-primary-light to-neutral-50 flex flex-col items-center justify-center gap-3 relative overflow-hidden"
-              role="img"
-              aria-label="Pantalla principal — Vista de Calendario (screenshot pendiente)"
-            >
-              <!-- Grid de fondo simulando calendario -->
-              <div class="absolute inset-0 grid grid-cols-7 gap-px p-6 opacity-10" aria-hidden="true">
-                {Array(35).fill(null).map(() => (
-                  <div class="bg-primary rounded-sm"></div>
-                ))}
-              </div>
-
-              <div class="relative z-10 text-center px-4">
-                <div class="w-14 h-14 bg-primary/15 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-7 h-7 text-primary"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
-                    />
+              <!-- Affordance: lupa al hover -->
+              <span
+                class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors duration-200"
+                aria-hidden="true"
+              >
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/90 rounded-full p-2.5 shadow-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-neutral-900">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="M21 21l-4.3-4.3M11 8v6M8 11h6" />
                   </svg>
-                </div>
-                <p class="text-sm font-semibold text-neutral-600">Vista de Calendario</p>
-                <p class="text-xs text-neutral-400 mt-1">[ Reemplazar con screenshot real ]</p>
-              </div>
-            </div>
+                </span>
+              </span>
+            </button>
           </div>
 
-          <!-- Thumbnails de las otras vistas -->
-          <div class="grid grid-cols-4 gap-2 mt-3" aria-label="Otras vistas del producto">
-            {[
-              { label: 'Login',    icon: 'lock',     id: 'login'     },
-              { label: 'Pedidos',  icon: 'list',     id: 'add-order' },
-              { label: 'Equipo',   icon: 'users',    id: 'employees' },
-              { label: 'Filtros',  icon: 'filter',   id: 'filter'    },
-            ].map((thumb) => (
-              <div
-                class="bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden"
-                role="img"
-                aria-label={`Vista: ${thumb.label} (screenshot pendiente)`}
+          <!-- Thumbnails de las otras vistas (clic = abrir en grande) -->
+          <div class="grid grid-cols-4 gap-2 mt-3" aria-label="Otras vistas del producto — clic para ampliar">
+            {gallery.map((thumb, i) => (
+              <button
+                type="button"
+                class="group relative bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden cursor-zoom-in"
+                data-lightbox-target="hero-gallery"
+                data-lightbox-trigger={i}
+                aria-label={`Ampliar: ${thumb.alt}`}
               >
-                <!--
-                  TODO: Reemplazar por:
-                  <img src={`/screenshots/${thumb.id}.png`} alt={`Vista ${thumb.label}`} class="w-full" loading="lazy" />
-                -->
-                <div class="aspect-video bg-neutral-50 flex flex-col items-center justify-center gap-1">
-                  <div class="w-6 h-6 bg-primary/10 rounded flex items-center justify-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="2"
-                      stroke="currentColor"
-                      class="w-3.5 h-3.5 text-primary"
-                      aria-hidden="true"
-                    >
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
-                    </svg>
-                  </div>
-                  <span class="text-[10px] text-neutral-400 font-medium leading-none">
-                    {thumb.label}
-                  </span>
-                </div>
-              </div>
+                <img
+                  src={thumb.src}
+                  alt={`Vista ${thumb.label} en Delivery Planner`}
+                  class="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <span
+                  class="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/25 transition-colors duration-200"
+                  aria-hidden="true"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="M21 21l-4.3-4.3M11 8v6M8 11h6" />
+                  </svg>
+                </span>
+              </button>
             ))}
           </div>
         </div>
@@ -261,4 +229,7 @@ const screenshots = [
 
     </div>
   </div>
+
+  <!-- Lightbox de la galería del hero -->
+  <Lightbox images={gallery} id="hero-gallery" />
 </section>

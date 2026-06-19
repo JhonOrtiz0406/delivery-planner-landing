@@ -6,6 +6,5 @@ const WHATSAPP_MESSAGE =
 
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
-// TODO_VERIFICAR: Definir URL del video demo o reemplazar con enlace al producto
 export const DEMO_URL =
-  import.meta.env.PUBLIC_DEMO_URL ?? '#demo-pendiente';
+  import.meta.env.PUBLIC_DEMO_URL ?? 'https://delivery-planner.bystepsolutions.tech';
